@@ -3,4 +3,50 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <context-param>
+        <param-name>name</param-name>
+        <param-value>coderZoe</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>MyFirstServlet</servlet-name>
+        <servlet-class>Servlet.Class1MyFirstServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyFirstServlet</servlet-name>
+        <url-pattern>/first</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>second</servlet-name>
+        <servlet-class>Servlet.Class2SecondServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>second</servlet-name>
+        <url-pattern>/second</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ServletConfigClass</servlet-name>
+        <servlet-class>Servlet.Class3ServletConfigClass</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>coderZoe</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletConfigClass</servlet-name>
+        <url-pattern>/getConfig</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletContextClass</servlet-name>
+        <servlet-class>Servlet.Class4ServletContextClass</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletContextClass</servlet-name>
+        <url-pattern>/getContext</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

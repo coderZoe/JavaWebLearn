@@ -57,7 +57,7 @@ public class Class6ResponseClass extends HttpServlet {
 //        printWriter.write("这是字符流消息");   //同样会编码异常
         //同样我们可以设置头部信息进行编码
 
-        response.setContentType("text/html;charset=UTF-8");        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter printWriter = response.getWriter();
         printWriter.write("这是编码后的消息");
     }

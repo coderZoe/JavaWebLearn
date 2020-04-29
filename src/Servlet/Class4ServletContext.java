@@ -12,7 +12,7 @@ import java.io.IOException;
  * @date 2020/4/27 20:57
  * @description ServletContext对象代表当前web站点 所有的Servlet都有同一个ServletContext 所以ServletContext可以实现Servlet之间通讯
  */
-public class Class4ServletContextClass extends HttpServlet {
+public class Class4ServletContext extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext servletContext = this.getServletContext();

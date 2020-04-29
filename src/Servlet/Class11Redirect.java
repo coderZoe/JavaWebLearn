@@ -27,8 +27,7 @@ public class Class11Redirect extends HttpServlet {
         //1.重定向
 //        response.sendRedirect("/JavaWebLearn/index.jsp");
 
-        //2.转发
-        //转发就是对sendRedirect的具体实现
+        //具体实现
         response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);   //302 临时重定向
         response.setHeader("Location","/JavaWebLearn/index.jsp");
     }

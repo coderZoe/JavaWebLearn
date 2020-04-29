@@ -12,7 +12,7 @@ import java.io.IOException;
  * @date 2020/4/27 20:48
  * @description
  */
-public class Class3ServletConfigClass extends HttpServlet {
+public class Class3ServletConfig extends HttpServlet {
 
     /**
      * ServletConfig对象可以读取web.xml中的初始化参数配置

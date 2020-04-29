@@ -28,7 +28,7 @@
     
     <servlet>
         <servlet-name>ServletConfigClass</servlet-name>
-        <servlet-class>Servlet.Class3ServletConfigClass</servlet-class>
+        <servlet-class>Servlet.Class3ServletConfig</servlet-class>
         <init-param>
             <param-name>name</param-name>
             <param-value>coderZoe</param-value>
@@ -41,7 +41,7 @@
 
     <servlet>
         <servlet-name>ServletContextClass</servlet-name>
-        <servlet-class>Servlet.Class4ServletContextClass</servlet-class>
+        <servlet-class>Servlet.Class4ServletContext</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletContextClass</servlet-name>

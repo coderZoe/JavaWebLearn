@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
  * @description response对象 回复给浏览器
  */
 @WebServlet(name = "Class6ResponseClass",urlPatterns = "/getResponse")
-public class Class6ResponseClass extends HttpServlet {
+public class Class6Response extends HttpServlet {
 
     /**
      * request对象代表http请求，里面包含了浏览器提交过来的数据

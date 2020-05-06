@@ -51,5 +51,12 @@
 
   <a href="/JavaWebLearn/form?username=yhs">使用get请求传递参数</a>
 
+  <form action="/JavaWebLearn/demo" method="post">
+    用户名:<input type="text" name="username"><br/>
+    密码:<input type="password" name="password"><br/>
+    <input type="submit" value="提交">提交
+    <input type="reset" value="重置">重置
+  </form>
+
   </body>
 </html>

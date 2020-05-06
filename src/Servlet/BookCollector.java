@@ -24,6 +24,11 @@ public class BookCollector {
         int id = Integer.parseInt(idString);
         return linkedHashMap.get(id).getName();
     }
+
+    public static Book getBookById(String idString){
+        int id = Integer.parseInt(idString);
+        return linkedHashMap.get(id);
+    }
 }
 
 class Book{

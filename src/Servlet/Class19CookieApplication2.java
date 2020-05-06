@@ -31,7 +31,9 @@ public class Class19CookieApplication2 extends HttpServlet {
 
         for(Map.Entry<Integer,Book> bookEntry:entries){
             Book book = bookEntry.getValue();
-            writer.write("<a href='/JavaWebLearn/bookServlet?id="+book.getId() +"''target=_blank'>"+book.getName() +"</a>");
+            String url = "/JavaWebLearn/buyBook?id="+book.getId();
+            writer.write(book.getName());
+            writer.write("<a href='"+url+"'>购买</a>");
             writer.write("<br/>");
         }
         writer.write("您曾经浏览过："+"<br/>");

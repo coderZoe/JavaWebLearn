@@ -47,6 +47,9 @@
         <servlet-name>ServletContextClass</servlet-name>
         <url-pattern>/getContext</url-pattern>
     </servlet-mapping>
-
+    
+    <error-page>
+        <location>/JSP/error.jsp</location>
+    </error-page>
 
 </web-app>

@@ -1,3 +1,9 @@
+<%@ page import="JSP.Person" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+<%@taglib prefix="fn" uri="/WEB-INF/filter.tld"%>
 <%--
   Created by IntelliJ IDEA.
   User: 90617
@@ -86,5 +92,142 @@
 <%
     out.println(pageContext.getAttribute("name"));
 %>
+
+<%--JavaBean的使用--%>
+<jsp:useBean id="person" class="JSP.Person" scope="page"/>
+<%
+    person.setName("yhs");
+    out.println(person.getName());
+    System.out.println(person.getName());
+%>
+<%--jsp:setProperty--%>
+<jsp:setProperty name="person" property="name" value="tomcat"/>
+<%
+    System.out.println(person.getName());
+%>
+
+<%--将setProperty与form表单一起使用--%>
+<form action="firstJSP.jsp" method="post">
+    用户名:<input type="text" name="name" />
+    年龄:<input type="text" name="age" />
+    <input type="submit" value="提交">
+    <input type="reset" value="重置">
+</form>
+
+<%--这里JSP自动做了反射 将form表单name的值字段对应到了Person的属性上--%>
+<jsp:setProperty name="person" property="*"/>
+<%
+    System.out.println(person.getName());
+    System.out.println(person.getAge());
+%>
+
+<%--直接out.print输出到html--%>
+<jsp:getProperty name="person" property="name"/>
+<jsp:getProperty name="person" property="age"/>
+
+<%--EL表达式--%>
+<%
+    session.setAttribute("name","yhs");
+    System.out.println("设置了一个session");
+%>
+<%--普通方法--%>
+<%
+    String name = (String) session.getAttribute("name");
+    System.out.println("得到了Session----->"+name);
+%>
+<br/>
+<%--EL表达式--%>
+<%--直接out.print了--%>
+${name}
+
+<%--EL操作JavaBean 利用了反射 调用了对象的getter方法--%>
+${person.name}
+
+<%--EL操作集合--%>
+<%
+    List<Person> personList = new ArrayList<>();
+    for(int i = 0; i < 10; i++){
+        personList.add(new Person("tom"+i,String.valueOf(i)));
+    }
+    session.setAttribute("list",personList);
+%>
+<br/>
+${list[0].name} <br/>
+${list[1].name} <br/>
+
+<%
+    Map<String,Person> personMap = new HashMap<>();
+    for(int i = 0; i < 10; i++){
+        personMap.put("tom"+i,new Person("tom"+i,String.valueOf(i)));
+    }
+    session.setAttribute("map",personMap);
+%>
+${map.tom0.name}<br/>
+${map.tom1.name}<br/>
+
+<%--测试EL的11个内置对象--%>
+<%--pageContext内置对象--%>
+<%
+    pageContext.setAttribute("pageContext1", "pageContext");
+%>
+pageContext内置对象：${pageContext.getAttribute("pageContext1")}
+<br>
+<%--pageScope内置对象--%>
+<%
+    pageContext.setAttribute("pageScope1","pageScope");
+%>
+pageScope内置对象:${pageScope.pageScope1}
+<br>
+<%--requestScope内置对象--%>
+<%
+    request.setAttribute("request1","request");
+%>
+requestScope内置对象:${requestScope.request1}
+<br>
+<%--sessionScope内置对象--%>
+<%
+    session.setAttribute("session1", "session");
+%>
+sessionScope内置对象：${sessionScope.session1}
+<br>
+<%--applicationScope内置对象--%>
+<%
+    application.setAttribute("application1","application");
+%>
+applicationScope内置对象：${applicationScope.application1}
+<br>
+<%--header内置对象--%>
+header内置对象：${header.Host}
+<br>
+<%--headerValues内置对象,取出第一个Cookie--%>
+headerValues内置对象：${headerValues.Cookie[0]}
+<br>
+<%--Cookie内置对象--%>
+<%
+    Cookie cookie = new Cookie("Cookie1", "cookie");
+%>
+Cookie内置对象：${cookie.JSESSIONID.value}
+<br>
+<%--initParam内置对象，需要为该Context配置参数才能看出效果【jsp配置的无效！亲测】--%>
+initParam内置对象:${initParam.name}
+<br>
+
+<%--测试EL的param对象--%>
+<%--参数是上面的form表单传递来的--%>
+${param.name}
+${param.age}
+
+<%
+    Person user = new Person();
+    user.setAge("20");
+
+    //数据回显
+    request.setAttribute("user",user);
+%>
+<input type="radio" name="age" value="20" ${user.age=='20'?'checked':'' }>20
+<input type="radio" name="age" value="25" ${user.age=='25'?'checked':'' }>25
+
+<%--测试EL调用自定义方法--%>
+${fn:filter("<a href = ‘http://www.google.com’>谷歌</a>")}
 </body>
 </html>

@@ -29,7 +29,7 @@ public class Class23UserDemo {
     }
 }
 
-class User{
+class   User{
     private String userName;
     private String password;
 
@@ -39,6 +39,11 @@ class User{
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return userName;
     }
 
     public String getUserName() {
